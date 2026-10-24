@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Book Review Hub</title>
+</head>
+<body>
+    <h1>Book Review Hub</h1>
+
+    <p>
+        @Html.ActionLink("Home", "Index", "Reviews") |
+        @Html.ActionLink("Add Review", "Create", "Reviews") |
+        @Html.ActionLink("All Reviews", "List", "Reviews")
+    </p>
+
+    <hr />
+
+    @RenderBody()
+
+    <hr />
+
+    <p>Book Review Hub</p>
+
+    <script src="~/lib/jquery.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

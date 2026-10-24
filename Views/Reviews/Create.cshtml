@@ -1,0 +1,59 @@
+@model Lab_7.Models.BookReview
+@{
+    ViewData["Title"] = "Add Review";
+}
+
+<h2>Add Review</h2>
+
+@await Html.PartialAsync("_ReviewInfo")
+
+@using (Html.BeginForm("Create", "Reviews", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "Please fix the errors below.")
+
+    <p>
+        @Html.LabelFor(m => m.ReviewerName)
+        <br />
+        @Html.TextBoxFor(m => m.ReviewerName)
+        <br />
+        @Html.ValidationMessageFor(m => m.ReviewerName)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.BookTitle)
+        <br />
+        @Html.TextBoxFor(m => m.BookTitle)
+        <br />
+        @Html.ValidationMessageFor(m => m.BookTitle)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Genre)
+        <br />
+        @Html.DropDownListFor(m => m.Genre, (SelectList)ViewBag.Genres, "-- Select Genre --")
+        <br />
+        @Html.ValidationMessageFor(m => m.Genre)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.Rating)
+        <br />
+        @Html.DropDownListFor(m => m.Rating, (SelectList)ViewBag.Ratings)
+        <br />
+        @Html.ValidationMessageFor(m => m.Rating)
+    </p>
+
+    <p>
+        @Html.LabelFor(m => m.ReviewText)
+        <br />
+        @Html.TextAreaFor(m => m.ReviewText, 4, 40, null)
+        <br />
+        @Html.ValidationMessageFor(m => m.ReviewText)
+    </p>
+
+    <input type="submit" value="Save Review" />
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

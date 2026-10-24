@@ -1,0 +1,42 @@
+@model List<Lab_7.Models.BookReview>
+@{
+    ViewData["Title"] = "All Reviews";
+}
+
+<h2>All Reviews</h2>
+
+@if (TempData["Message"] != null)
+{
+    <p><b>@TempData["Message"]</b></p>
+}
+
+@if (Model.Count == 0)
+{
+    <p>No reviews yet.</p>
+}
+else
+{
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Reviewer</th>
+            <th>Book</th>
+            <th>Genre</th>
+            <th>Rating</th>
+            <th>Review</th>
+        </tr>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.ReviewerName</td>
+                <td>@r.BookTitle</td>
+                <td>@r.Genre</td>
+                <td>@r.Rating / 5</td>
+                <td>@r.ReviewText</td>
+            </tr>
+        }
+    </table>
+}
+
+<br />
+
+@Html.ActionLink("Add Another Review", "Create")
